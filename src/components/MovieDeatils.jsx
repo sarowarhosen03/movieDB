@@ -8,7 +8,7 @@ async function MovieDeatils({id, lang}) {
     const movies = await getImportedMovies();
     const movie = movies.find(movie => movie.id === parseInt(id))
     if (!movie) {
-        return <NotFound message={`Movie Not for Movie id  ${id} `}/>
+        return <NotFound message={`No Movie found for Movie id  ${id} `}/>
     }
     const {title, overview, poster_path, backdrop_path, release_date, vote_average, vote_count, popularity} = movie;
     const {
