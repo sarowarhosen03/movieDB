@@ -18,6 +18,18 @@ module.exports = {
         light: "#fff",
         body: "#1D1E28"
       },
+      animation: {
+        fade: 'fadeIn .3s ease-in-out forwards',
+      },
+
+      keyframes: {
+        fadeIn: {
+            '0%': { opacity: 0 },
+          "25%": { opacity: 0.25 },
+          "75%": { opacity: 0.75},
+            '100%': { opacity: 1 },
+        },
+      },
     },
   },
   plugins: [],

@@ -39,10 +39,10 @@ const Modal = ({children}) => {
 
         <div ref={overlay}
              onClick={onClick}
-             className="fixed top-0 bottom-0  right-0  left-0  transition-all duration-150  flex flex-col items-center justify-center  bg-black bg-opacity-70 z-20 ">
+             className="animate-fade fixed top-0 bottom-0  right-0  left-0  transition-all duration-150  flex flex-col items-center justify-center  bg-black bg-opacity-70 z-20 ">
             <div
                 ref={wrapper}
-                className=" max-w-[70%] bg-body p-3 rounded-md ">
+                className=" animate-fade max-w-[70%] bg-body p-3 rounded-md ">
                 {children}
             </div>
         </div>
