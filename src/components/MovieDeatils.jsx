@@ -2,10 +2,11 @@
 import Image from "next/image";
 import NotFound from "@/components/NotFound";
 import {getDictionary} from "@/lib/getDictionary";
+import getImportedMovies from "@/lib/getImportedMovies";
 
 async function MovieDeatils({id, lang}) {
-    const movies = await import("../db/movies.json").then(module => module.default) || [];
-    const movie = movies.results.find(movie => movie.id === parseInt(id))
+    const movies = await getImportedMovies();
+    const movie = movies.find(movie => movie.id === parseInt(id))
     if (!movie) {
         return <NotFound message={`Movie Not for Movie id  ${id} `}/>
     }
