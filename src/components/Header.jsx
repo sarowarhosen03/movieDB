@@ -1,6 +1,7 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
 function Header() {
     return (
@@ -37,6 +38,10 @@ function Header() {
                             href="#">
                             <Image src="/assets/shopping-cart.svg" width="24" height="24" alt=""/>
                         </Link>
+                    </li>
+                    <li>
+               <LanguageSwitcher/>
+
                     </li>
                 </ul>
             </nav>
