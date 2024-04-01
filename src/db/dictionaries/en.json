@@ -1,0 +1,14 @@
+{
+  "trending": "Trending",
+  "new_releases": "New Releases",
+  "coming_soon": "Coming Soon",
+  "favourites": "Favourites",
+  "watch_later": "Watch Later",
+  "release_date": "Release Date",
+  "popularity": "Popularity",
+  "average_vote": "Average Vote",
+  "vote_count": "Vote Count",
+  "steam_hd": "Stream In HD",
+  "download_hd": "Download In HD",
+  "no_movie_found": "Movie List is Empty"
+}

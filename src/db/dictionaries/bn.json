@@ -1,0 +1,14 @@
+{
+  "trending": "চলমান",
+  "new_releases": "নতুন প্রকাশ",
+  "coming_soon": "শীঘ্রই আসছে",
+  "favourites": "প্রিয় তালিকা",
+  "watch_later": "পরে দেখুন",
+  "release_date": "প্রকাশের তারিখ",
+  "popularity": "জনপ্রিয়তা",
+  "average_vote": "গড় ভোট",
+  "vote_count": "ভোট গণনা",
+  "steam_hd": "এইচডি স্ট্রিম করুন",
+  "download_hd": "এইচডি ডাউনলোড করুন",
+  "no_movie_found": "Movie List is Empty"
+}
