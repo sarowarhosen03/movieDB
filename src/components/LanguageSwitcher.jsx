@@ -1,11 +1,9 @@
 'use client';
-import {locales} from "@/middleware";
 import {usePathname, useRouter} from "next/navigation";
 import Image from "next/image";
 import {useRef, useState} from "react";
-import Link from "next/link";
 
-function LanguageSwitcher(props) {
+function LanguageSwitcher() {
     const router = useRouter();
     const pathname = usePathname();
 
@@ -22,7 +20,7 @@ function LanguageSwitcher(props) {
             "image": '/assets/icons/bd.png'
         }
     ]
-    const found = languages.find(lang => lang.code == currentLangPath);
+    const found = languages.find(lang => lang.code === currentLangPath);
     const [selectedLanguage, setSelectedLanguage] = useState(found ?? languages[0]);
     const langDropDwonRef = useRef();
 
@@ -34,13 +32,13 @@ function LanguageSwitcher(props) {
             window.location.replace(newPathName) //to bypassRouteInterception
         else
             router.push(newPathName);
-        langDropDwonRef.current.classList.toggle("opacity-0");
+        langDropDwonRef.current?.classList.toggle("opacity-0");
     }
 
     return (
         <div className="relative">
             <button onClick={() => {
-                langDropDwonRef.current.classList.toggle("opacity-0");
+                langDropDwonRef.current?.classList.toggle("opacity-0");
 
             }} className="flex items-center gap-2">
                 <Image className="max-w-8" src={selectedLanguage.image} height={20} width={20}
@@ -52,12 +50,12 @@ function LanguageSwitcher(props) {
             <div ref={langDropDwonRef}
                  className="absolute right-0 top-full mt-2 w-40 rounded-md bg-body p-2 z-10 shadow-lg opacity-0">
                 <ul>
-                    {languages.filter((lang) => lang.code != found.code).map((lang, index) => (
+                    {languages.filter((lang) => lang.code !== found.code).map((lang, index) => (
                         <li key={index}
                             onClick={() => handelSwithcLanguage(lang)}
-                            className="flex items-center justify-between gap-2 p-2 rounded-md cursor-pointer hover:bg-gray-100 hover:bg-primary ">
+                            className="flex items-center justify-between gap-2 p-2 rounded-md cursor-pointer  hover:bg-primary ">
 
-                            <img className="max-w-8" src={lang.image} alt={lang.language}/>
+                            <Image className="max-w-8" src={lang.image} alt={lang.language} height={20} width={20}/>
                             {lang.language}
 
                         </li>
