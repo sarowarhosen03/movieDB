@@ -6,9 +6,14 @@ let defaultLocale = "en";
 export let locales = ["en", "bn"];
 
 function getLocale(request) {
+
+    const preferedLanguage = request.cookies.get("lang")?.value;
+    if(preferedLanguage){
+        return preferedLanguage;
+    }
     const acceptedLanguage =
         request.headers.get("accept-language") ?? undefined;
-    const headers = { "accept-language": acceptedLanguage };
+    const headers = { "accept-language":acceptedLanguage };
     const languages = new Negotiator({ headers })?.languages();
 
     return match(languages, locales, defaultLocale); // en or bn
@@ -27,7 +32,6 @@ export function middleware(request) {
     if (pathNameIsMissingLocale) {
         // detect user's preference & redirect with a locale with a path eg: /en/about
         const locale = getLocale(request);
-
         return NextResponse.redirect(
             new URL(`/${locale}/${pathname}`, request.url)
         );
