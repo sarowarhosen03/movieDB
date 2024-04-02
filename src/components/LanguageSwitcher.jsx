@@ -1,7 +1,7 @@
 'use client';
 import {usePathname, useRouter} from "next/navigation";
 import Image from "next/image";
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 function LanguageSwitcher() {
     const router = useRouter();
@@ -29,22 +29,37 @@ function LanguageSwitcher() {
         else router.push(newPathName, {
             scroll: false
         });
-        langDropDwonRef.current?.classList.toggle("opacity-0");
+        toggleMenu()
+    }
+
+    function escapeMenu(e) {
+        if (e.key === "Escape") toggleMenu()
+
+    }
+
+    useEffect(() => {
+        document.addEventListener('keydown', escapeMenu)
+        return () => document.removeEventListener('keydown', escapeMenu)
+
+    }, [])
+
+    function toggleMenu() {
+        langDropDwonRef.current?.classList.toggle("hidden");
+
     }
 
     return (<div className="relative">
-            <button onClick={() => {
-                langDropDwonRef.current?.classList.toggle("opacity-0");
+        <button onClick={toggleMenu} className="flex items-center gap-2">
+            <Image className="max-w-8" src={selectedLanguage.image} height={20} width={20}
+                   alt={selectedLanguage.language}/>
+            {selectedLanguage.language}
+        </button>
 
-            }} className="flex items-center gap-2">
-                <Image className="max-w-8" src={selectedLanguage.image} height={20} width={20}
-                       alt={selectedLanguage.language}/>
-                {selectedLanguage.language}
-            </button>
+        <div  ref={langDropDwonRef} className="hidden">
+            <div onClick={toggleMenu}  className="fixed inset-0  h-screen w-screen  "></div>
 
-
-            <div ref={langDropDwonRef}
-                 className="absolute right-0 top-full mt-2 w-40 rounded-md bg-body p-2 z-10 shadow-lg opacity-0">
+            <div
+                 className="absolute right-0 top-full mt-2 w-40 rounded-md bg-body p-2 z-10 shadow-lg  z-10">
                 <ul>
                     {languages?.filter((lang) => lang.code !== found?.code)
                         .map((lang, index) => (<li key={index}
@@ -59,7 +74,9 @@ function LanguageSwitcher() {
                         ))}
                 </ul>
             </div>
-        </div>);
+        </div>
+
+    </div>);
 }
 
 export default LanguageSwitcher;
