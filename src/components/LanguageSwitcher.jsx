@@ -7,7 +7,7 @@ function LanguageSwitcher() {
     const router = useRouter();
     const pathname = usePathname();
 
-    const currentLangPath = pathname.split("/")[1];
+    const currentLangPath = pathname?.split("/")[1];
     const languages = [
         {
             'code': 'en',
@@ -20,6 +20,7 @@ function LanguageSwitcher() {
             "image": '/assets/icons/bd.png'
         }
     ]
+
     const found = languages.find(lang => lang.code === currentLangPath);
     const [selectedLanguage, setSelectedLanguage] = useState(found ?? languages[0]);
     const langDropDwonRef = useRef();
@@ -50,7 +51,8 @@ function LanguageSwitcher() {
             <div ref={langDropDwonRef}
                  className="absolute right-0 top-full mt-2 w-40 rounded-md bg-body p-2 z-10 shadow-lg opacity-0">
                 <ul>
-                    {languages.filter((lang) => lang.code !== found.code).map((lang, index) => (
+                    {languages?.filter((lang) => lang.code !== found?.code)
+                        .map((lang, index) => (
                         <li key={index}
                             onClick={() => handelSwithcLanguage(lang)}
                             className="flex items-center justify-between gap-2 p-2 rounded-md cursor-pointer  hover:bg-primary ">
