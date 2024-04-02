@@ -32,7 +32,9 @@ function LanguageSwitcher() {
         if (pathname.includes("movies"))
             window.location.replace(newPathName) //to bypassRouteInterception
         else
-            router.push(newPathName);
+            router.push(newPathName,{
+                scroll:false
+            });
         langDropDwonRef.current?.classList.toggle("opacity-0");
     }
 
