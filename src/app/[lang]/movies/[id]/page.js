@@ -32,7 +32,7 @@ if(!movie){
   return  locales.reduce((acc, lang) => {
         return acc.concat(movies.results.map(movie => {
             return {
-                    lang,
+                    lang:lang.code,
                     id: movie.id.toString()
 
             }

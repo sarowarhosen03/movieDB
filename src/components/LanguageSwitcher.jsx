@@ -2,17 +2,14 @@
 import {usePathname, useRouter} from "next/navigation";
 import Image from "next/image";
 import {useEffect, useRef, useState} from "react";
+import {locales} from "@/middleware";
 
 function LanguageSwitcher() {
     const router = useRouter();
     const pathname = usePathname();
 
     const currentLangPath = pathname?.split("/")[1];
-    const languages = [{
-        'code': 'en', 'language': 'English', "image": '/assets/icons/usa.png'
-    }, {
-        'code': 'bn', 'language': 'Bangla', "image": '/assets/icons/bd.png'
-    }]
+    const languages = locales;
 
     const found = languages.find(lang => lang.code === currentLangPath);
     const [selectedLanguage, setSelectedLanguage] = useState(found ?? languages[0]);

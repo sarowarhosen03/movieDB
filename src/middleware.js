@@ -2,8 +2,12 @@ import { match } from "@formatjs/intl-localematcher";
 import Negotiator from "negotiator";
 import { NextResponse } from "next/server";
 
-let defaultLocale = "en";
-export let locales = ["en", "bn"];
+let defaultLocale = 'en';
+export let locales = [{
+    'code': 'en', 'language': 'English', "image": '/assets/icons/usa.png'
+}, {
+    'code': 'bn', 'language': 'Bangla', "image": '/assets/icons/bd.png'
+}];
 
 function getLocale(request) {
 
@@ -16,7 +20,7 @@ function getLocale(request) {
     const headers = { "accept-language":acceptedLanguage };
     const languages = new Negotiator({ headers })?.languages();
 
-    return match(languages, locales, defaultLocale); // en or bn
+    return match(languages, locales.map(loc=>loc.code), defaultLocale); // en or bn
 }
 
 export function middleware(request) {
@@ -25,8 +29,8 @@ export function middleware(request) {
 
     const pathNameIsMissingLocale = locales.every(
         (locale) =>
-            !pathname.startsWith(`/${locale}`) &&
-            !pathname.startsWith(`/${locale}/`)
+            !pathname.startsWith(`/${locale.code}`) &&
+            !pathname.startsWith(`/${locale.code}/`)
     );
 
     if (pathNameIsMissingLocale) {

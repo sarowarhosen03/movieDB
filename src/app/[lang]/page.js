@@ -8,7 +8,7 @@ import {locales} from "@/middleware";
 export  function  generateStaticParams(){
     return locales.map(lang => {
         return {
-            lang
+            lang:lang.code
         }
     })
 }

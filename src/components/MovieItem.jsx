@@ -1,9 +1,10 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import {getDictionary} from "@/lib/getDictionary";
 
-function MovieItem({lang,id,title,gnreIdList, genre_ids, poster_path, vote_average,vote_count}) {
-
+async function MovieItem({lang,id,title,gnreIdList, genre_ids, poster_path, vote_average,vote_count}) {
+const {details}=await getDictionary(lang)
     return (
         <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
             <Image draggable={false} className="w-full object-cover" src={poster_path} height={458} width={305} alt=" psoter path"/>
@@ -22,7 +23,7 @@ function MovieItem({lang,id,title,gnreIdList, genre_ids, poster_path, vote_avera
                 scroll={false}
                 >
                     <Image src="/assets/tag.svg" alt="" height={20} width={20}/>
-                    <span>Details</span>
+                    <span>{details}</span>
                 </Link>
             </figcaption>
         </figure>
