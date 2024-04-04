@@ -1,7 +1,7 @@
 'use client';
 import {usePathname, useRouter} from "next/navigation";
 import Image from "next/image";
-import {useEffect, useRef, useState} from "react";
+import {useCallback, useEffect, useRef, useState} from "react";
 import {locales} from "@/middleware";
 
 function LanguageSwitcher() {
@@ -14,6 +14,11 @@ function LanguageSwitcher() {
     const found = languages.find(lang => lang.code === currentLangPath);
     const [selectedLanguage, setSelectedLanguage] = useState(found ?? languages[0]);
     const langDropDwonRef = useRef();
+    function toggleMenu() {
+        langDropDwonRef.current?.classList.toggle("hidden");
+
+    }
+
 
     async function handelSwithcLanguage(lang) {
         //set preferred language in cookie
@@ -29,21 +34,17 @@ function LanguageSwitcher() {
         toggleMenu()
     }
 
-    function escapeMenu(e) {
-        if (e.key === "Escape") toggleMenu()
+    const  escapeMenu= useCallback((e)=>{
+        if (e.key === "Escape"&&!langDropDwonRef.current?.classList.contains("hidden")) toggleMenu()
 
-    }
+    },[])
 
     useEffect(() => {
         document.addEventListener('keydown', escapeMenu)
         return () => document.removeEventListener('keydown', escapeMenu)
 
-    }, [])
+    }, [escapeMenu])
 
-    function toggleMenu() {
-        langDropDwonRef.current?.classList.toggle("hidden");
-
-    }
 
     return (<div className="relative">
         <button onClick={toggleMenu} className="flex items-center gap-2">
@@ -56,7 +57,7 @@ function LanguageSwitcher() {
             <div onClick={toggleMenu}  className="fixed inset-0  h-screen w-screen  "></div>
 
             <div
-                 className="absolute right-0 top-full mt-2 w-40 rounded-md bg-body p-2 z-10 shadow-lg  z-10">
+                 className="absolute right-0 top-full mt-2 w-40 rounded-md bg-body p-2 z-10 shadow-lg  ">
                 <ul>
                     {languages?.filter((lang) => lang.code !== found?.code)
                         .map((lang, index) => (<li key={index}
