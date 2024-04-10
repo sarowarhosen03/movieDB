@@ -1,4 +1,3 @@
-
 import Image from "next/image";
 import Link from "next/link";
 import {getDictionary} from "@/lib/getDictionary";
@@ -7,7 +6,7 @@ async function MovieItem({lang,id,title,gnreIdList, genre_ids, poster_path, vote
 const {details}=await getDictionary(lang)
     return (
         <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
-            <Image draggable={false} className="w-full object-cover" src={poster_path} height={458} width={305} alt=" psoter path"/>
+            <Image draggable={false} className="w-full object-cover" src={poster_path} height={458} width={305} alt=" psoter path" />
             <figcaption className="pt-4">
                 <h3 className="text-xl mb-1">{title}</h3>
                 <p className=" text-sm mb-2 text-slate-400">{genre_ids?.map(id=>gnreIdList?.[id]||null).join("/")}</p>

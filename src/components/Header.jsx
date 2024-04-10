@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import Image from "next/image";
 import LanguageSwitcher from "@/components/LanguageSwitcher";
@@ -7,8 +6,8 @@ function Header() {
     return (
         <header>
             <nav className="container flex items-center justify-between space-x-10 py-6">
-                <Link href="/">
-                    <Image src="/assets/logo.svg" width="139" height="26" alt=""
+                <Link href="/" >
+                    <Image src="/assets/logo.svg" width="139" height="26" alt="Cinerenterlogo"
                            priority
                            style={{
                                height: "26px",

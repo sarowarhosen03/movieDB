@@ -49,7 +49,7 @@ function LanguageSwitcher() {
     return (<div className="relative">
         <button onClick={toggleMenu} className="flex items-center gap-2">
             <Image className="max-w-8" src={selectedLanguage.image} height={20} width={20}
-                   alt={selectedLanguage.language}/>
+                   alt={selectedLanguage.image}/>
             {selectedLanguage.language}
         </button>
 
@@ -64,7 +64,7 @@ function LanguageSwitcher() {
                                                    onClick={() => handelSwithcLanguage(lang)}
                                                    className="flex items-center justify-between gap-2 p-2 rounded-md cursor-pointer  hover:bg-primary ">
 
-                                <Image className="max-w-8" src={lang.image} alt={lang.language} height={20} width={20}/>
+                                <Image className="max-w-8" src={lang.image} alt={lang.image} height={20} width={20}/>
                                 {lang.language}
 
                             </li>
