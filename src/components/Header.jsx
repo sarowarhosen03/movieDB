@@ -28,7 +28,7 @@ function Header() {
                         <Link
                             className="bg-primary/20 dark:bg-primary/[7%] rounded-lg backdrop-blur-[2px] p-1 inline-block"
                             href="#">
-                            <Image src="/assets/icons/sun.svg" width="24" height="24" alt=""/>
+                            <Image src="/assets/icons/sun.svg" width="24" height="24" alt="sun.svg"/>
                         </Link>
                     </li>
                     <li>
