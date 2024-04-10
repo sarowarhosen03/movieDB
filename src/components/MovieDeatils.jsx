@@ -1,14 +1,13 @@
-
 import Image from "next/image";
-import NotFound from "@/components/NotFound";
 import {getDictionary} from "@/lib/getDictionary";
 import getImportedMovies from "@/lib/getImportedMovies";
+import {notFound} from "next/navigation";
 
 async function MovieDeatils({id, lang}) {
     const movies = await getImportedMovies();
     const movie = movies.find(movie => movie.id === parseInt(id))
     if (!movie) {
-        return <NotFound message={`This movie with ${id} id was not found! `}/>
+        return notFound()
     }
     const {title, overview, poster_path, backdrop_path, release_date, vote_average, vote_count, popularity} = movie;
     const {
@@ -27,6 +26,7 @@ async function MovieDeatils({id, lang}) {
                        src={backdrop_path} alt="backdrop image"
                        height={859} width={483}
                        draggable={false}
+                       priority
                 />
             </div>
 

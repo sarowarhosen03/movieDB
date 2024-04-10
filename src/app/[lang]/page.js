@@ -1,8 +1,5 @@
-
-import AsideBar from "@/components/AsideBar";
 import MoviList from "@/components/MoviList";
 import {locales} from "@/middleware";
-
 
 
 export  function  generateStaticParams(){
@@ -14,10 +11,5 @@ export  function  generateStaticParams(){
 }
 
 export default function Home({params:{lang}}) {
-    return (
-<>
-    <AsideBar lang={lang}/>
-    <MoviList lang={lang} />
-</>
-    );
+    return <MoviList lang={lang} />
 }

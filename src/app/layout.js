@@ -13,13 +13,9 @@ export default function RootLayout({children}) {
         <html lang="en" className="dark">
         <body className=" dark:bg-body bg-white font-[Sora] dark:text-white text-dark">
         <Header/>
-
-                {children}
-
-
-
-                <Footer/>
+        {children}
+        <Footer/>
         </body>
         </html>
-);
+    );
 }
