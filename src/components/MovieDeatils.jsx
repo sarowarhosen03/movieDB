@@ -36,9 +36,9 @@ async function MovieDeatils({id, lang}) {
                            width={200} alt="poster path" draggable={false}/>
                 </div>
                 <div className="col-span-8">
-                    <h2 className="font-bold text-slate-300 text-2xl">{title}</h2>
-                    <p className="my-2 text-slate-400 italic">{overview}</p>
-                    <ul className="text-slate-300 space-y-2 my-8">
+                    <h2 className="font-bold text-body dark:text-slate-300 text-2xl">{title}</h2>
+                    <p className="my-2 text-body dark:text-slate-400 italic">{overview}</p>
+                    <ul className="text-slate-300 text-slate-700 dark:text-slate-400 space-y-2 my-8">
                         <li>{relaseDate} :{release_date}</li>
                         <li> {average_vote}: {vote_average}</li>
                         <li>{voteCount} : {vote_count}</li>
